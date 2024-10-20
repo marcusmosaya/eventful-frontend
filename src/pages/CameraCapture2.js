@@ -37,9 +37,7 @@ function CameraCapture2({setPhotos,photos}){
                
         }
     }
-    const handleDownload=()=>{
-        window.open(`http://localhost:5000/photo/${eventId}/download-zip`,'_blank');
-    }
+    
     const uploadPhoto=async ()=>{
          await stream.getTracks().forEach((track)=>track.stop());
          setStream(null);

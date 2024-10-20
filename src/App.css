@@ -2,47 +2,85 @@
   border-bottom: 2px solid black;
   width: 100%;
 }
-.card-header-options{
-  position:absolute;
-  right:5px;
-  top:10px;
-  width:20px;
-  height:20px;
-  border-radius:50%;
-  cursor:pointer;
-  background-color: rgb(19, 16, 16);
+footer{
+  color: black;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  margin-top: 5px;
 }
-.card-header-options :hover{
-  background-color: greenyellow;
+.footer-container{
+  margin: 0;
+  display: block;
+ 
+ 
 }
-.copy{
-  cursor: pointer;
+.footer-bottom{
+  text-align: center;
+  margin-top: 30px;
 }
-.card-line{
-  border:2px solid lightgray;
-  padding:5px;
-  border-radius: 5px;
+.footer-bottom p{
+  font-size: 0.8em;
 }
-.app-card-menu{
-  position:absolute;
-  right:20px;
-  top:25px;
-  width:100px;
-  height:60px;
-  z-index: 1;
-}
-.create-app-card{
-  position:absolute;
-  right:20%;
-  top:30%;
+.mobile-pop{
+  position: fixed;
+  top: 30%;
+  left:7.5%;
   z-index: 999;
+  width: 85%;
 }
-.app-edit-card{
-  position:absolute;
-  right:20%;
-  top:30%;
-  z-index: 999;
+.invoice-card{
+  width:100%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
-.hide{
-  display: none;
+header{
+  margin-bottom: 20px;
+}
+header h2{
+  color: #333;
+  margin-bottom: 5px;
+}
+header p{
+  font-size: 14px;
+  color: #888;
+}
+.invoice-details{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.company-info h4, .client-info h4{
+margin-bottom: 5px;
+font-size: 16px;
+color: #333;
+}
+.invoice-items{
+  width: 100%;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+}
+.invoice-items th,.invoice-items td{
+  border: 1px;
+  padding: 8px;
+  text-align: left;
+}
+.invoice-items th{
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+.invoice-items tr{
+  border-bottom: 1px black solid;
+}
+.invoice-items tfoot{
+  border-bottom: 1px black solid;
+}
+.total td{
+ border-bottom: 1px red solid;
+ 
+}
+.payment-container{
+  border:1px darkgray solid;
 }

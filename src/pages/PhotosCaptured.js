@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import Bar from "../components/Bar";
-import "../styles/Gallery.css"
+import "../styles/Gallery.css";
+import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 function CapturedPhotos({photos}){
+    let navigate=useNavigate();
     const [selectedPhotos,setselectedPhotos]=useState([]);
-
+    let eventId=localStorage.getItem('eventId');
     const handlePhotoSelection=(photo)=>{
       if(selectedPhotos.includes(photo)){
         setselectedPhotos(selectedPhotos.filter((p)=>p!==photo))
@@ -12,19 +15,34 @@ function CapturedPhotos({photos}){
       }
     }
 
-    const uploadSelectedPhotos=()=>{
+    const uploadSelectedPhotos=async ()=>{
       const formData=new FormData();
-      selectedPhotos.forEach((photo,index)=>{
-        const blob=dataURLToBlob(photo);
-        console.log(photo);
-        formData.append('image',blob,`photo-${index+1}.png`);  
+      Array.from(selectedPhotos).forEach((file,index)=>{
+        const blob=dataURLToBlob(file);
+        formData.append('image',blob,`photo-${index+1}.png`);
       })
-      console.log(formData.image);
-     /* fetch('/upload',{method:'POST',body:formData,}).then((response)=>response.json()).then((data)=>{
-        alert(data.message);
-      }).catch((error)=>{
-        console.log(error);
-      })*/
+      let by=localStorage.getItem(`${eventId}By`)
+      formData.append('by',by);
+      formData.append('eventId',eventId);
+      console.log(formData);
+      try {
+                const response=await fetch(`http://127.0.0.1:5000/photo/${eventId}/upload`,{
+                    method:'POST',
+                    body:formData,
+                });
+                console.log(response);
+                if (response.ok){
+                    alert('upload successful');
+                    navigate('/camera');
+                }
+                else{
+
+                    alert('Failed')
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        
     }
     const dataURLToBlob=(dataURL)=>{
        const byteString=atob(dataURL.split(',')[1]);
@@ -36,7 +54,6 @@ function CapturedPhotos({photos}){
        }
        return new Blob([ab],{type:mimeString});
     }
-    let eventId=localStorage.getItem('eventId');
     return(
         <>
           <Bar />
@@ -49,11 +66,12 @@ function CapturedPhotos({photos}){
         ))}
           </div>
           {
-            selectedPhotos.length>0&&(
-              <button onClick={uploadSelectedPhotos} className="btn btn-primary" >Upload photos</button>
-            )
+            selectedPhotos.length>0&&<button onClick={uploadSelectedPhotos} className="btn btn-primary" >Upload photos</button>
+            
           }
+          <Footer />
         </>
+
     )
 }
 export default CapturedPhotos;

@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { validateEmail,validatePassword } from "../utilities/utility";
+import Footer from "../components/Footer";
 function Register(){
     const [data,setData]=useState({email:'',password:'',confirmPassword:''});
     const tempError={email:'',password:'',confirmPassword:''};
@@ -102,6 +103,7 @@ function Register(){
 
              </div>
          </div>
+         <Footer />
         </>
     )
 }

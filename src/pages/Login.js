@@ -2,6 +2,7 @@ import React,{useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { validatePassword,validateEmail } from "../utilities/utility";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 function Login(){
     const [data,setData]=useState({email:'',password:''});
     const tempError={email:'',password:''}
@@ -101,6 +102,7 @@ function Login(){
 
              </div>
          </div>
+         <Footer />
         </>
     )
 }

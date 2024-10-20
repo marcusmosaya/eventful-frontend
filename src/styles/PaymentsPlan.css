@@ -1,0 +1,40 @@
+.payment-plans{
+    text-align: center;
+}
+.plans-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fill ,minmax(300px,1fr));
+    gap: 16px;
+    justify-items:center;
+    padding: 10px;
+    background-color: transparent;
+}
+.plan-card{
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 320px;
+    cursor: pointer;
+}
+.plan-card:hover{
+    background-color: #f0f0f0;
+}
+.selected-plan{
+    margin-top: 20px;
+}
+.invoice-card{
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 100%;
+    cursor: pointer;
+}
+.invoice-body{
+    display: grid;
+    grid-template-columns: repeat(auto-fill );
+    gap: 16px;
+    justify-items:center;
+    padding: 10px;
+    background-color: transparent;
+}
+.invoice-body:hover{
+    background-color: #f0f0f0;
+}

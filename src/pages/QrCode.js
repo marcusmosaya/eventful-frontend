@@ -16,7 +16,7 @@ function QrCodeGen({qrURL}){
         <>
         <div ref={qrRef} className="text-center">
          <QRCodeCanvas  value={qrURL} size={256} bgColor={'#ffffff'} fgColor={'#4477CC'} level={'L'} includeMargin={true}  /><br/>
-         <button onClick={downloadQRCode} className="btn btn-primary" >Download QRCode image</button>
+         <button onClick={downloadQRCode} className="btn btn-primary form-control w-50" >Download QRCode image</button>
          </div>
         </>
     )

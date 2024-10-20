@@ -15,9 +15,9 @@ import Event from './pages/Event';
 import EventChanges from './pages/eventChanges';
 import Qredirect from './pages/Qredirect';
 import ConfirmVisitor from './pages/confirmVisitor';
-import Index from './pages/sth';
 import AddVisitorsManually from './pages/addVisitorsManually';
 import CapturedPhotos from './pages/PhotosCaptured';
+import Checkout from './pages/Checkout';
 
 function App() {
   const [photos,setPhotos]=useState([]);
@@ -39,6 +39,7 @@ function App() {
             <Route path='/photos' Component={GalleryPage} />
             <Route path='/event/:eventId/addVisitor' Component={AddVisitorsManually} />
             <Route path='/photos/select' element={<CapturedPhotos setPhotos={setPhotos} photos={photos} />} />
+            <Route path='/checkout' Component={Checkout} />
           </Routes> 
      </BrowserRouter>
     </>

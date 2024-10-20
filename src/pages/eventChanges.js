@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import { useParams,useNavigate } from 'react-router-dom';
 import Bar from '../components/Bar';
+import Footer from '../components/Footer';
 function EventChanges(){
     let {eventId}=useParams();
     let navigate=useNavigate();
@@ -79,6 +80,15 @@ function EventChanges(){
             headers:{'Content-Type':'Application/json',"Authorization":`Bearer ${token}`},
             method:'GET',
         }).then(response=>{
+            if(response.status===403){
+                navigate('/auth/login');
+                return;
+            }
+            if(response.status===400){
+                navigate('/auth/login');
+                alert("Seems like you are tying to access a protected resource");
+                return;
+            }
             if(!response.ok){
                 throw new Error('Network response was not ok');
             }
@@ -160,6 +170,7 @@ function EventChanges(){
                </div>
            </div>
       </div>
+      <Footer />
     </>
   )
 }

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Bar from "../components/Bar";
 import { countWords } from "../utilities/utility";
+import Footer from "../components/Footer";
 function EventRegister(){
     let navigate=useNavigate();
     let token=localStorage.getItem('accessToken');
@@ -58,11 +59,12 @@ function EventRegister(){
                 body:JSON.stringify({
                     name:event.name,
                     description:event.description,
-                    startDateTime:event.startDateTime.toString().slice(0, 19).replace('T', ' '),
-                    endDateTime:event.endDateTime.toString().slice(0, 19).replace('T', ' '),
+                    startDateTime:new Date(event.startDateTime).toISOString(),
+                    endDateTime:new Date(event.endDateTime).toISOString(),
                     accessibility:event.accessibility
                 }),
             });
+            
             if (response.ok){
                 let res=await response.json()
                 if(res.success===false){
@@ -137,6 +139,7 @@ function EventRegister(){
             </div>
 
          </div>
+         <Footer />
         </>
     )
 }
